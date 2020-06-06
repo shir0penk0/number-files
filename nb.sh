@@ -5,7 +5,8 @@ if [ $# -ne 1 ]; then
 fi
 
 cd $1
-DIGITS=$((`ls -F | grep -v / | wc -l` / 10 + 2))
+n=$((`ls -F | grep -v / | wc -l`))
+DIGITS=${#n}
 
 get_sorted_filenames(){
     ls -F -tr | grep -v /
