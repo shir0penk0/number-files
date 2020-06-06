@@ -1,7 +1,13 @@
 #!/bin/bash
+if [ $# -ne 1 ]; then
+  echo "please set a target directory" 1>&2
+  exit 1
+fi
+
+cd $1
 DIGITS=$((`ls -F | grep -v / | wc -l` / 10 + 2))
 
-order(){
+get_sorted_filenames(){
     ls -F -tr | grep -v /
 }
 
@@ -15,4 +21,4 @@ rename(){
     done
 }
 
-order | rename
+get_sorted_filenames | rename
